@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    background-color: #1a1d29;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    color: #fff;
+}
+
+.hidden {
+    display: none; 
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    height: calc(100vh - 100px);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.row-container {
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.tile-title {
+    display: none;
+    padding-top: 5px;
+}
+
+.row-title {
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.row-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to left, #1a1d29, transparent);
+}
+
+/* Row Styles */
+.row {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-right: 20px;
+}
+
+.row::-webkit-scrollbar {
+    display: none;
+}
+
+.tile {
+    position: relative;
+    flex: 0 0 auto;
+    margin: 10px 10px;
+    width: 200px;
+    height: 115px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: visible;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tile.focused {
+    box-shadow: 0 0 15px 5px rgba(243, 243, 243, 0.7);
+    z-index: 1;
+    transform: scale(1.05);
+
+    .tile-title {
+        display: block;
+    }
+}
+
+/* Modal Styles */
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#modal.show {
+    display: flex;
+}
+
+#modal-content {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+    color: #fff;
+    z-index: 1001;
+}
+
+#modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#modal-title {
+    margin-top: 0;
+}
+
+#modal-description {
+    white-space: pre-line;
+}
